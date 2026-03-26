@@ -49,13 +49,94 @@
   }
   .warning strong { color: #856404; }
 
+  /* SGM justification box */
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #2980b9;
+    padding: .85rem 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    font-size: .85rem;
+    line-height: 1.45;
+    color: #1a3a4a;
+  }
+  .info-box strong { color: #1a5276; }
+
+  /* Route tabs */
+  .route-tabs {
+    display: flex;
+    gap: 0;
+    margin: 1.25rem 0 0;
+    border-bottom: 2px solid #1b4332;
+  }
+  .route-tab {
+    flex: 1;
+    padding: .7rem .5rem;
+    text-align: center;
+    font-size: .88rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    background: #e9ecef;
+    color: #555;
+    transition: background .15s, color .15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .route-tab.active {
+    background: #fff;
+    color: #1b4332;
+    border-color: #1b4332;
+    position: relative;
+  }
+  .route-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #fff;
+  }
+  .route-tab .tab-label {
+    display: block;
+    font-size: .78rem;
+    font-weight: 400;
+    color: #777;
+    margin-top: .15rem;
+  }
+  .route-tab.active .tab-label { color: #555; }
+
+  .route-panel {
+    display: none;
+    background: #fff;
+    border: 2px solid #1b4332;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+  }
+  .route-panel.active { display: block; }
+
+  .route-badge {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 700;
+    padding: .15rem .5rem;
+    border-radius: 10px;
+    margin-right: .35rem;
+    vertical-align: middle;
+  }
+  .badge-a { background: #fce4ec; color: #b71c1c; }
+  .badge-b { background: #e0f2f1; color: #004d40; }
+
   /* Critical path box */
   .critical-path {
     background: #fff;
     border: 2px solid #1b4332;
     border-radius: 8px;
     padding: 1rem;
-    margin: 1.25rem 0;
+    margin: 1.25rem 0 0;
   }
   .critical-path h2 {
     font-size: 1.05rem;
@@ -88,6 +169,8 @@
   }
   .milestone.highlight .m-date { color: #0d2818; }
   .milestone.highlight .m-event { font-weight: 600; }
+  .cp-route { display: none; }
+  .cp-route.active { display: block; }
 
   /* Section headers */
   .section-header {
@@ -98,6 +181,12 @@
     border-radius: 6px 6px 0 0;
     font-size: .95rem;
     font-weight: 600;
+  }
+  .shared-label {
+    font-size: .75rem;
+    font-weight: 400;
+    opacity: .7;
+    margin-left: .5rem;
   }
 
   /* Timeline rows */
@@ -176,6 +265,18 @@
     line-height: 1.4;
   }
 
+  /* Route B gain indicator */
+  .gain {
+    display: inline-block;
+    background: #d4edda;
+    color: #155724;
+    font-size: .75rem;
+    font-weight: 600;
+    padding: .1rem .4rem;
+    border-radius: 8px;
+    margin-left: .35rem;
+  }
+
   /* Notes */
   .notes {
     background: #fff;
@@ -219,37 +320,72 @@
 <div class="container">
 
   <div class="warning">
-    ⚠️ <strong>Urgent:</strong> The EGM notice should have gone out by 22 March. If sent this week, the timeline still fits but with <strong>zero slack</strong>.
+    ⚠️ <strong>Urgent:</strong> The EGM notice should have gone out by 22 March. That deadline has passed. Two routes remain — an EGM (Route A, tight but standard) or an SGM (Route B, accelerated under Clause 9).
   </div>
 
-  <!-- Critical Path -->
+  <!-- Route Tabs for Critical Path -->
   <div class="critical-path">
     <h2>📌 Critical Path — At a Glance</h2>
-    <div class="milestone">
-      <span class="m-date">Sun 22 Mar</span>
-      <span class="m-event">EGM notice issued</span>
+    <div class="cp-route active" id="cp-a">
+      <div class="milestone">
+        <span class="m-date">Sun 22 Mar</span>
+        <span class="m-event"><span class="route-badge badge-a">A</span> EGM notice issued</span>
+      </div>
+      <div class="milestone">
+        <span class="m-date">Sun 12 Apr</span>
+        <span class="m-event"><span class="route-badge badge-a">A</span> EGM — Commissioners elected</span>
+      </div>
+      <div class="milestone">
+        <span class="m-date">Fri 8 May</span>
+        <span class="m-event">Nominations close</span>
+      </div>
+      <div class="milestone highlight">
+        <span class="m-date">Sun 24 May</span>
+        <span class="m-event">⬤ ELECTION DAY</span>
+      </div>
+      <div class="milestone highlight">
+        <span class="m-date">Sun 7 Jun</span>
+        <span class="m-event">⬤ AGM — New EC takes office</span>
+      </div>
     </div>
-    <div class="milestone">
-      <span class="m-date">Sun 12 Apr</span>
-      <span class="m-event">EGM — Electoral Commissioners elected</span>
-    </div>
-    <div class="milestone">
-      <span class="m-date">Fri 8 May</span>
-      <span class="m-event">Nominations close</span>
-    </div>
-    <div class="milestone highlight">
-      <span class="m-date">Sun 24 May</span>
-      <span class="m-event">⬤ ELECTION DAY</span>
-    </div>
-    <div class="milestone highlight">
-      <span class="m-date">Sun 7 Jun</span>
-      <span class="m-event">⬤ AGM — New EC takes office</span>
+    <div class="cp-route" id="cp-b">
+      <div class="milestone">
+        <span class="m-date">Mon 30 Mar</span>
+        <span class="m-event"><span class="route-badge badge-b">B</span> SGM notice issued</span>
+      </div>
+      <div class="milestone">
+        <span class="m-date">Sun 5 Apr</span>
+        <span class="m-event"><span class="route-badge badge-b">B</span> SGM — Commissioners elected <span class="gain">+7 days slack</span></span>
+      </div>
+      <div class="milestone">
+        <span class="m-date">Fri 8 May</span>
+        <span class="m-event">Nominations close</span>
+      </div>
+      <div class="milestone highlight">
+        <span class="m-date">Sun 24 May</span>
+        <span class="m-event">⬤ ELECTION DAY</span>
+      </div>
+      <div class="milestone highlight">
+        <span class="m-date">Sun 7 Jun</span>
+        <span class="m-event">⬤ AGM — New EC takes office</span>
+      </div>
     </div>
   </div>
 
-  <!-- SECTION 1: EGM -->
-  <div class="section-header">1 · EGM — Electing Electoral Commissioners (Mar–Apr)</div>
-  <div class="timeline-table">
+  <!-- Route Selector Tabs -->
+  <div class="route-tabs">
+    <div class="route-tab active" data-route="a" onclick="switchRoute('a')">
+      Route A · EGM
+      <span class="tab-label">Ideal but late — 21 clear days</span>
+    </div>
+    <div class="route-tab" data-route="b" onclick="switchRoute('b')">
+      Route B · SGM
+      <span class="tab-label">Accelerated — 4 clear days</span>
+    </div>
+  </div>
+
+  <!-- Route A Panel -->
+  <div class="route-panel active" id="panel-a">
     <div class="t-row key-event">
       <div class="t-top">
         <span class="t-date">Sun 22 Mar</span>
@@ -276,8 +412,41 @@
     </div>
   </div>
 
+  <!-- Route B Panel -->
+  <div class="route-panel" id="panel-b">
+    <div class="t-row" style="background:#e8f4fd; font-size:.83rem; padding:.6rem .85rem; color:#1a5276; line-height:1.4;">
+      <strong>Why an SGM?</strong> Electoral Commissioners were not elected at the AGM on 27 Jul 2025 as required by R.&nbsp;7.9, and the election cycle cannot begin without them. With the AGM constitutionally required between 1 June and 31 July, there is insufficient time for a standard EGM. Under Cl.&nbsp;9, an SGM requires the EC to explain why the matter cannot await the usual EGM timeline. This qualifies.
+    </div>
+    <div class="t-row key-event">
+      <div class="t-top">
+        <span class="t-date">Mon 30 Mar</span>
+        <span class="t-days">69 days</span>
+        <span class="t-clause">Cl. 9</span>
+      </div>
+      <div class="t-event">SGM notice issued</div>
+      <div class="t-detail">4 clear days' written notice required. Clear days: Tue 31 Mar, Wed 1 Apr, Thu 2 Apr, Fri 3 Apr — meeting can be held from Sat 4 Apr onwards (practically 6 calendar days).</div>
+    </div>
+    <div class="t-row period">
+      Tue 31 Mar – Fri 3 Apr · 4 clear days' notice period for SGM
+    </div>
+    <div class="t-row key-event">
+      <div class="t-top">
+        <span class="t-date">Sun 5 Apr</span>
+        <span class="t-days">63 days</span>
+        <span class="t-clause">R. 7.6, 7.9</span>
+      </div>
+      <div class="t-event">SGM held — Electoral Commissioners elected <span class="gain">+7 days vs Route A</span></div>
+      <div class="t-detail">5 commissioners elected by secret ballot (at least 1 woman, at least 1 man). Same election rules as an EGM — only the notice period differs. Commissioners in post 1 week earlier than Route A.</div>
+    </div>
+    <div class="t-row period">
+      Mon 6 – Sun 12 Apr · Commission organises: elects Chairperson, establishes processes, requests resources from Hon Sec
+    </div>
+  </div>
+
+  <!-- SHARED SECTIONS FROM HERE -->
+
   <!-- SECTION 2: Pre-Election -->
-  <div class="section-header">2 · Pre-Election (Apr–May)</div>
+  <div class="section-header">2 · Pre-Election (Apr–May) <span class="shared-label">same for both routes</span></div>
   <div class="timeline-table">
     <div class="t-row key-event">
       <div class="t-top">
@@ -330,7 +499,7 @@
   </div>
 
   <!-- SECTION 3: Pre-AGM Notices -->
-  <div class="section-header">3 · Pre-AGM Notices (May)</div>
+  <div class="section-header">3 · Pre-AGM Notices (May) <span class="shared-label">same for both routes</span></div>
   <div class="timeline-table">
     <div class="t-row key-event">
       <div class="t-top">
@@ -371,7 +540,7 @@
   </div>
 
   <!-- SECTION 4: Election & AGM -->
-  <div class="section-header">4 · Election &amp; AGM (May–Jun)</div>
+  <div class="section-header">4 · Election &amp; AGM (May–Jun) <span class="shared-label">same for both routes</span></div>
   <div class="timeline-table">
     <div class="t-row election">
       <div class="t-top">
@@ -405,16 +574,27 @@
     </div>
   </div>
 
+  <!-- Route comparison -->
+  <div class="notes" style="border-color:#1b4332; margin-top:1.5rem;">
+    <h2>⚖️ Route A vs Route B — Comparison</h2>
+    <ul>
+      <li><strong>Route A (EGM)</strong> — Standard procedure. 21 clear days' notice (Cl. 8.1). Requires notice by ~22 Mar to meet the timeline. Commissioners elected Sun 12 Apr. <strong>Zero slack remaining.</strong></li>
+      <li><strong>Route B (SGM)</strong> — Accelerated under Cl. 9. Only 4 clear days' notice. Notice goes Mon 30 Mar, SGM held Sun 5 Apr. Commissioners elected <strong>1 week earlier</strong> than Route A, giving extra buffer for the commission to organise. Requires the EC to justify urgency (see below).</li>
+      <li><strong>Downstream dates are identical</strong> — Both routes lead to the same Election (Sun 24 May) and AGM (Sun 7 Jun). The only difference is how quickly the Electoral Commission is stood up.</li>
+    </ul>
+  </div>
+
   <!-- Notes -->
   <div class="notes">
     <h2>📝 Notes</h2>
     <ul>
-      <li><strong>"Clear days"</strong> (Cl. 20.1) — Excludes both the day of notice and the day of the event. So "21 clear days" means at least 23 calendar days between sending and the meeting.</li>
+      <li><strong>"Clear days"</strong> (Cl. 20.1) — Excludes both the day of notice and the day of the event. So "21 clear days" means at least 23 calendar days between sending and the meeting; "4 clear days" means at least 6 calendar days.</li>
+      <li><strong>SGM justification</strong> (Cl. 9) — An SGM requires the EC to state that a matter of great importance and urgency must be discussed and cannot await the usual EGM timeline. The justification here: Electoral Commissioners were not elected at the AGM on 27 Jul 2025 as required by R.&nbsp;7.9, and the election cycle cannot begin without them. With the AGM constitutionally required between 1 June and 31 July, there is insufficient time for a standard EGM.</li>
       <li><strong>AGM date constraints</strong> (Cl. 6.8) — Must be between 1 June and 31 July. Must not fall on a UK public holiday (or the Friday/Monday either side), or on an auspicious Shia Ithna-Asheri date. Sunday 7 June 2026 appears clear.</li>
       <li><strong>Election must be on a Sunday</strong> (Cl. 10.1) — Polling hours 10:30–19:30, at least 2 weeks before the AGM.</li>
       <li><strong>Uncontested positions</strong> (R. 7.4.2) — Declared elected without a vote.</li>
       <li><strong>Contested President</strong> (R. 7.4.3) — If more than one candidate, hustings are mandatory (at least 1 day before Election).</li>
-      <li><strong>If no Electoral Commissioners are elected at the EGM</strong>, the entire election cycle cannot proceed.</li>
+      <li><strong>If no Electoral Commissioners are elected</strong> at the EGM/SGM, the entire election cycle cannot proceed.</li>
     </ul>
   </div>
 
@@ -423,6 +603,21 @@
   </footer>
 
 </div>
+
+<script>
+function switchRoute(route) {
+  // Tabs
+  document.querySelectorAll('.route-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.route === route);
+  });
+  // Panels
+  document.getElementById('panel-a').classList.toggle('active', route === 'a');
+  document.getElementById('panel-b').classList.toggle('active', route === 'b');
+  // Critical path
+  document.getElementById('cp-a').classList.toggle('active', route === 'a');
+  document.getElementById('cp-b').classList.toggle('active', route === 'b');
+}
+</script>
 
 </body>
 </html>
