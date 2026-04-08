@@ -129,9 +129,11 @@
     margin-right: .35rem;
     vertical-align: middle;
   }
-  .badge-a { background: #d4edda; color: #155724; }
-  .badge-b { background: #fff3cd; color: #856404; }
-  .badge-c { background: #fce4ec; color: #b71c1c; }
+  .badge-a { background: #fff3cd; color: #856404; }
+  .badge-b { background: #d4edda; color: #155724; }
+
+  /* Deadline badge */
+  .deadline { background: #dc3545; color: #fff; font-size: .75rem; font-weight: 700; padding: .15rem .5rem; border-radius: 10px; display: inline-block; margin-left: .5rem; }
 
   /* Critical path box */
   .critical-path {
@@ -329,9 +331,8 @@
     color: #555;
     white-space: nowrap;
   }
-  .comparison .col-a { background: #f0faf0; }
-  .comparison .col-b { background: #fffdf0; }
-  .comparison .col-c { background: #fef8f8; }
+  .comparison .col-a { background: #fffdf0; }
+  .comparison .col-b { background: #f0faf0; }
   .comparison .slack-none { color: #b71c1c; font-weight: 600; }
   .comparison .slack-tight { color: #e65100; font-weight: 600; }
   .comparison .slack-good { color: #2e7d32; font-weight: 600; }
@@ -418,7 +419,7 @@
 
 <header>
   <h1>KSIMC London — Election Timeline Update (8 April 2026)</h1>
-  <div class="subtitle">Revised critical paths from today — three routes to AGM 2026</div>
+  <div class="subtitle">Two EGM routes to AGM 2026 — notices must go out NOW</div>
 </header>
 
 <div class="container">
@@ -432,19 +433,19 @@
   <div class="critical-path">
     <h2>📌 Critical Path — At a Glance</h2>
 
-    <!-- Route 3 (Recommended) — default active -->
-    <div class="cp-route active" id="cp-3">
+    <!-- Route B (Recommended) — default active -->
+    <div class="cp-route active" id="cp-B">
       <div class="milestone">
-        <span class="m-date">Wed 8 Apr</span>
-        <span class="m-event"><span class="route-badge badge-a">★ Recommended</span> EGM notice sent (today)</span>
+        <span class="m-date">Sun 12 Apr</span>
+        <span class="m-event"><span class="route-badge badge-b">★ Recommended</span> EGM notice sent <span class="deadline">⏰ DEADLINE: Must send by Sun 12 Apr</span></span>
       </div>
       <div class="milestone">
         <span class="m-date">Sun 4 May</span>
-        <span class="m-event"><span class="route-badge badge-a">3</span> EGM — Commissioners elected</span>
+        <span class="m-event"><span class="route-badge badge-b">B</span> EGM — Commissioners elected</span>
       </div>
       <div class="milestone">
         <span class="m-date">Fri 22 May</span>
-        <span class="m-event">AGM notice + accounts + candidate details sent</span>
+        <span class="m-event">AGM notice + accounts + candidate details sent <span class="deadline">⏰ DEADLINE: Must send by Fri 22 May</span></span>
       </div>
       <div class="milestone highlight">
         <span class="m-date">Sun 31 May</span>
@@ -456,43 +457,19 @@
       </div>
     </div>
 
-    <!-- Route 2 (Tight) -->
-    <div class="cp-route" id="cp-2">
+    <!-- Route A (Tight) -->
+    <div class="cp-route" id="cp-A">
       <div class="milestone">
         <span class="m-date">Wed 8 Apr</span>
-        <span class="m-event"><span class="route-badge badge-b">⚠️ Tight</span> EGM notice sent (today)</span>
+        <span class="m-event"><span class="route-badge badge-a">⚠️ Tight</span> EGM notice sent <span class="deadline">⏰ DEADLINE: Must send by Wed 8 Apr</span></span>
       </div>
       <div class="milestone">
         <span class="m-date">Fri 1 May</span>
-        <span class="m-event"><span class="route-badge badge-b">2</span> EGM — Commissioners elected (or Sun 4 May)</span>
+        <span class="m-event"><span class="route-badge badge-a">A</span> EGM — Commissioners elected (or Sun 4 May)</span>
       </div>
       <div class="milestone">
         <span class="m-date">Fri 15 May</span>
-        <span class="m-event">AGM notice + accounts + candidate details sent</span>
-      </div>
-      <div class="milestone highlight">
-        <span class="m-date">Sun 24 May</span>
-        <span class="m-event">⬤ ELECTION DAY</span>
-      </div>
-      <div class="milestone highlight">
-        <span class="m-date">Sun 7 Jun</span>
-        <span class="m-event">⬤ AGM — New EC takes office</span>
-      </div>
-    </div>
-
-    <!-- Route 1 (Fastest / SGM) -->
-    <div class="cp-route" id="cp-1">
-      <div class="milestone">
-        <span class="m-date">Wed 8 Apr</span>
-        <span class="m-event"><span class="route-badge badge-c">⚡ Fastest</span> SGM notice sent (today)</span>
-      </div>
-      <div class="milestone">
-        <span class="m-date">Tue 14 Apr</span>
-        <span class="m-event"><span class="route-badge badge-c">1</span> SGM — Commissioners elected (or Sun 20 Apr)</span>
-      </div>
-      <div class="milestone">
-        <span class="m-date">Fri 15 May</span>
-        <span class="m-event">AGM notice + accounts + candidate details sent</span>
+        <span class="m-event">AGM notice + accounts + candidate details sent <span class="deadline">⏰ DEADLINE: Must send by Fri 15 May</span></span>
       </div>
       <div class="milestone highlight">
         <span class="m-date">Sun 24 May</span>
@@ -507,24 +484,20 @@
 
   <!-- Route Selector Tabs -->
   <div class="route-tabs">
-    <div class="route-tab active" data-route="3" onclick="switchRoute('3')">
-      Route 3 · EGM ★
+    <div class="route-tab active" data-route="B" onclick="switchRoute('B')">
+      Route B · EGM ★
       <span class="tab-label">AGM Sun 14 Jun — recommended</span>
     </div>
-    <div class="route-tab" data-route="2" onclick="switchRoute('2')">
-      Route 2 · EGM
+    <div class="route-tab" data-route="A" onclick="switchRoute('A')">
+      Route A · EGM
       <span class="tab-label">AGM Sun 7 Jun — tight</span>
-    </div>
-    <div class="route-tab" data-route="1" onclick="switchRoute('1')">
-      Route 1 · SGM
-      <span class="tab-label">AGM Sun 7 Jun — fastest</span>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- ROUTE 3 PANEL — EGM → AGM Sun 14 Jun   -->
+  <!-- ROUTE B PANEL — EGM → AGM Sun 14 Jun   -->
   <!-- ═══════════════════════════════════════ -->
-  <div class="route-panel active" id="panel-3">
+  <div class="route-panel active" id="panel-B">
     <div class="t-row" style="background:#d4edda; font-size:.83rem; padding:.6rem .85rem; color:#155724; line-height:1.4;">
       <strong>★ Recommended — 67 days.</strong> Standard EGM with full 21 clear days' notice, AGM pushed to Sun 14 Jun (still within the 1 Jun – 31 Jul constitutional window). No SGM justification needed. Comfortable slack throughout. Most resilient to delays.
     </div>
@@ -534,15 +507,15 @@
     <div class="timeline-table">
       <div class="t-row key-event">
         <div class="t-top">
-          <span class="t-date">Wed 8 Apr</span>
-          <span class="t-days">67 days to AGM</span>
+          <span class="t-date">By Sun 12 Apr</span>
+          <span class="t-days">63 days to AGM</span>
           <span class="t-clause">Cl. 6.1, 8.1, 17.3.1</span>
         </div>
-        <div class="t-event">EGM notice SENT by email (TODAY)</div>
-        <div class="t-detail">21 clear days' notice required. Email deemed received 24h later on Thu 9 Apr (Cl. 17.3.1). Clear days exclude both the day of receipt and the day of the event (Cl. 20.1): Fri 10 Apr through Thu 30 Apr = 21 clear days. Earliest EGM: Fri 1 May.</div>
+        <div class="t-event">EGM notice SENT by email <span class="deadline">⏰ DEADLINE: Must send by Sun 12 Apr</span></div>
+        <div class="t-detail">21 clear days' notice required for EGM on Sun 4 May. If sent Wed 8 Apr: received Thu 9 Apr (24h rule). Clear days: Fri 10 Apr – Thu 30 Apr = 21 clear days. Earliest EGM: Fri 1 May. If sent Sun 12 Apr: received Mon 13 Apr. Clear days: Tue 14 Apr – Sat 3 May = 20 clear days… <strong>Last possible send date for EGM on Sun 4 May is Sat 11 Apr</strong> (received Sun 12 Apr, clear days Mon 13 Apr – Sat 3 May = 21). Sending today (Wed 8 Apr) is ideal.</div>
       </div>
       <div class="t-row period">
-        Thu 9 Apr – Thu 30 Apr · 21 clear days' notice period (received Thu 9, clear days Fri 10 Apr – Thu 30 Apr)
+        Thu 9 Apr – Thu 30 Apr · 21 clear days' notice period (if sent Wed 8 Apr; received Thu 9, clear days Fri 10 Apr – Thu 30 Apr)
       </div>
       <div class="t-row key-event">
         <div class="t-top">
@@ -603,7 +576,7 @@
           <span class="t-days">30 days to AGM</span>
           <span class="t-clause">R. 7.2, Cl. 17.3.1</span>
         </div>
-        <div class="t-event">Nominations close</div>
+        <div class="t-event">Nominations close <span class="deadline">⏰ DEADLINE: Must close by Fri 15 May</span></div>
         <div class="t-detail">Nomination papers must be returned at least 14 clear days before the Election. Send Fri 15 May, received Sat 16 May. Clear days: Sun 17 – Sat 30 May = 14 clear days. ✓</div>
       </div>
       <div class="t-row period">
@@ -627,7 +600,7 @@
           • Budget for forthcoming year approved by EC (Cl. 6.9.5)<br>
           • Subscription levels recommended by EC (R. 6.3)<br>
           • Previous AGM minutes prepared (Cl. 6.9.1)<br>
-          • All EGM/SGM minutes since last AGM prepared (Cl. 6.9.2)<br>
+          • All EGM minutes since last AGM prepared (Cl. 6.9.2)<br>
           • Auditor appointment to be placed on AGM agenda (Cl. 6.9.8)
         </div>
       </div>
@@ -637,7 +610,7 @@
           <span class="t-days">23 days to AGM</span>
           <span class="t-clause">Cl. 6.1, 12.9, 17.3.1</span>
         </div>
-        <div class="t-event">AGM notice + audited accounts SENT by email</div>
+        <div class="t-event">AGM notice + audited accounts SENT by email <span class="deadline">⏰ DEADLINE: Must send by Fri 22 May</span></div>
         <div class="t-detail">21 clear days' notice required. Sent Fri 22 May, received Sat 23 May (24h rule). Clear days: Sun 24 May – Sat 13 Jun = 21 clear days. ✓ Audited accounts must also be sent at least 21 days before the AGM (Cl. 12.9).</div>
       </div>
       <div class="t-row key-event">
@@ -655,7 +628,7 @@
           <span class="t-days">9 days to Election</span>
           <span class="t-clause">R. 7.4.1, Cl. 17.3.1</span>
         </div>
-        <div class="t-event">Candidate details circulated</div>
+        <div class="t-event">Candidate details circulated <span class="deadline">⏰ DEADLINE: Must send by Fri 22 May</span></div>
         <div class="t-detail">Electoral Commission must circulate names, CVs, and manifestos at least 7 clear days before the Election. Sent Fri 22 May, received Sat 23 May. Clear days: Sun 24 – Sat 30 May = 7 clear days before Election Sun 31 May. ✓</div>
       </div>
     </div>
@@ -669,7 +642,7 @@
           <span class="t-days">16 days to AGM</span>
           <span class="t-clause">Cl. 7.3, 17.3.1</span>
         </div>
-        <div class="t-event">Motions deadline — members must send by this date</div>
+        <div class="t-event">Motions deadline — members must send by this date <span class="deadline">⏰ DEADLINE: Must send by Fri 29 May</span></div>
         <div class="t-detail">Members must give 14 clear days' written notice to the Hon Secretary. Send Fri 29 May, received Sat 30 May. Clear days: Sun 31 May – Sat 13 Jun = 14 clear days. ✓</div>
       </div>
       <div class="t-row key-event">
@@ -715,9 +688,9 @@
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- ROUTE 2 PANEL — EGM → AGM Sun 7 Jun    -->
+  <!-- ROUTE A PANEL — EGM → AGM Sun 7 Jun    -->
   <!-- ═══════════════════════════════════════ -->
-  <div class="route-panel" id="panel-2">
+  <div class="route-panel" id="panel-A">
     <div class="t-row" style="background:#fff3cd; font-size:.83rem; padding:.6rem .85rem; color:#856404; line-height:1.4;">
       <strong>⚠️ Tight — 60 days.</strong> Standard EGM process targeting AGM Sun 7 Jun. The 21 clear days for the EGM push the commissioner election to Fri 1 May at earliest. If held on Sunday (4 May), the commission has only <strong>3 days</strong> before the register is due and nominations close. <strong>HIGH RISK</strong>: barely any time for the commission to organise. Consider holding EGM on Fri 1 May (weekday) to gain 3 extra days.
     </div>
@@ -731,8 +704,8 @@
           <span class="t-days">60 days to AGM</span>
           <span class="t-clause">Cl. 6.1, 8.1, 17.3.1</span>
         </div>
-        <div class="t-event">EGM notice SENT by email (TODAY)</div>
-        <div class="t-detail">21 clear days' notice required. Email received Thu 9 Apr (24h rule). Clear days: Fri 10 Apr – Thu 30 Apr = 21 clear days. Earliest EGM: Fri 1 May. 📢 Include reminder: constitutional amendments must be submitted to the Hon Secretary by Sun 26 Apr (6 weeks before AGM).</div>
+        <div class="t-event">EGM notice SENT by email <span class="deadline">⏰ DEADLINE: Must send by Wed 8 Apr (for EGM Fri 1 May)</span></div>
+        <div class="t-detail">21 clear days' notice required. Email received Thu 9 Apr (24h rule). Clear days: Fri 10 Apr – Thu 30 Apr = 21 clear days. Earliest EGM: Fri 1 May. If you want EGM on Sun 4 May instead, latest send date is Sun 12 Apr. 📢 Include reminder: constitutional amendments must be submitted to the Hon Secretary by Sun 26 Apr (6 weeks before AGM). <span class="deadline">⏰ DEADLINE: Must send by Sun 12 Apr for EGM Sun 4 May</span></div>
       </div>
       <div class="t-row period">
         Thu 9 Apr – Thu 30 Apr · 21 clear days' notice period
@@ -805,7 +778,7 @@
           <span class="t-days">30 days to AGM</span>
           <span class="t-clause">R. 7.2, Cl. 17.3.1</span>
         </div>
-        <div class="t-event">Nominations close</div>
+        <div class="t-event">Nominations close <span class="deadline">⏰ DEADLINE: Must close by Fri 8 May</span></div>
         <div class="t-detail">Nomination papers must be returned at least 14 clear days before Election. Send Fri 8 May, received Sat 9 May. Clear days: Sun 10 – Fri 23 May = 14 clear days. ✓</div>
       </div>
       <div class="t-row period">
@@ -829,7 +802,7 @@
           • Budget for forthcoming year approved by EC (Cl. 6.9.5)<br>
           • Subscription levels recommended by EC (R. 6.3)<br>
           • Previous AGM minutes prepared (Cl. 6.9.1)<br>
-          • All EGM/SGM minutes since last AGM prepared (Cl. 6.9.2)<br>
+          • All EGM minutes since last AGM prepared (Cl. 6.9.2)<br>
           • Auditor appointment to be placed on AGM agenda (Cl. 6.9.8)
         </div>
       </div>
@@ -839,7 +812,7 @@
           <span class="t-days">23 days to AGM</span>
           <span class="t-clause">Cl. 6.1, 12.9, 17.3.1</span>
         </div>
-        <div class="t-event">AGM notice + audited accounts SENT by email</div>
+        <div class="t-event">AGM notice + audited accounts SENT by email <span class="deadline">⏰ DEADLINE: Must send by Fri 15 May</span></div>
         <div class="t-detail">21 clear days' notice required. Sent Fri 15 May, received Sat 16 May (24h rule). Clear days: Sun 17 May – Sat 6 Jun = 21 clear days. ✓</div>
       </div>
       <div class="t-row key-event">
@@ -857,7 +830,7 @@
           <span class="t-days">9 days to Election</span>
           <span class="t-clause">R. 7.4.1, Cl. 17.3.1</span>
         </div>
-        <div class="t-event">Candidate details circulated</div>
+        <div class="t-event">Candidate details circulated <span class="deadline">⏰ DEADLINE: Must send by Fri 15 May</span></div>
         <div class="t-detail">Electoral Commission must circulate names, CVs, and manifestos at least 7 clear days before Election. Sent Fri 15 May, received Sat 16 May. Clear days: Sun 17 – Fri 23 May = 7 clear days before Election Sun 24 May. ✓</div>
       </div>
     </div>
@@ -871,209 +844,7 @@
           <span class="t-days">16 days to AGM</span>
           <span class="t-clause">Cl. 7.3, 17.3.1</span>
         </div>
-        <div class="t-event">Motions deadline — members must send by this date</div>
-        <div class="t-detail">Members must give 14 clear days' written notice to Hon Secretary. Send Fri 22 May, received Sat 23 May. Clear days: Sun 24 May – Sat 6 Jun = 14 clear days. ✓</div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Sat 23 May</span>
-          <span class="t-days">1 day before Election</span>
-          <span class="t-clause">R. 7.4.3</span>
-        </div>
-        <div class="t-event">Hustings (if President contested)</div>
-        <div class="t-detail">Mandatory if more than one candidate for President. Must be held at least 1 day before the Election (Sun 24 May). Fri 22 May or Sat 23 May.</div>
-      </div>
-      <div class="t-row election">
-        <div class="t-top">
-          <span class="t-date">Sun 24 May</span>
-          <span class="t-days">14 days to AGM</span>
-          <span class="t-clause">Cl. 10.1, R. 7.16, 7.20, 7.22</span>
-        </div>
-        <div class="t-event">🗳️ ELECTION DAY</div>
-        <div class="t-detail">Polling 10:30–19:30 at Imambara Building. Secret ballot. All 5 electoral commissioners must be present all day. Results declared same day. Must be on a Sunday, at least 2 weeks before AGM. Sun 24 May to Sun 7 Jun = 14 days. ✓</div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Tue 26 May</span>
-          <span class="t-days">12 days to AGM</span>
-          <span class="t-clause">Cl. 7.3, 17.3.1</span>
-        </div>
-        <div class="t-event">Motions circulated to members</div>
-        <div class="t-detail">All motions must be circulated at least 10 clear days before AGM. Sent Tue 26 May, received Wed 27 May. Clear days: Thu 28 May – Sat 6 Jun = 10 clear days. ✓</div>
-      </div>
-      <div class="t-row period">
-        Mon 25 May – Sat 6 Jun · Handover period — Incoming EC liaises with outgoing EC for orderly transfer (Cl. 11.4).
-      </div>
-      <div class="t-row agm">
-        <div class="t-top">
-          <span class="t-date">Sun 7 Jun</span>
-          <span class="t-days">Day 0</span>
-          <span class="t-clause">Cl. 6.8, 6.9, 11.4, R. 7.23</span>
-        </div>
-        <div class="t-event">📋 AGM</div>
-        <div class="t-detail">Must be held between 1 June and 31 July. New Executive Committee takes office at conclusion. Accounts adopted, budget approved, subscriptions set, motions heard, constitutional amendments voted, auditor appointed.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- ROUTE 1 PANEL — SGM → AGM Sun 7 Jun    -->
-  <!-- ═══════════════════════════════════════ -->
-  <div class="route-panel" id="panel-1">
-    <div class="t-row" style="background:#fce4ec; font-size:.83rem; padding:.6rem .85rem; color:#b71c1c; line-height:1.4;">
-      <strong>⚡ Fastest — 60 days.</strong> Uses an SGM (4 clear days' notice) instead of an EGM (21 clear days) to elect commissioners as soon as possible. Requires the EC to justify under Cl.&nbsp;9 that the matter is of "great importance and urgency." <em>Justification: Electoral Commissioners were not elected at AGM 27 Jul 2025 as required by R.&nbsp;7.9; the election cycle cannot begin without them.</em> Commissioners in place up to 20 days earlier than Route 2.
-    </div>
-
-    <!-- Section 1: Commissioner Election -->
-    <div class="section-header">1 · Commissioner Election (Apr)</div>
-    <div class="timeline-table">
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Wed 8 Apr</span>
-          <span class="t-days">60 days to AGM</span>
-          <span class="t-clause">Cl. 9, 17.3.1</span>
-        </div>
-        <div class="t-event">SGM notice SENT by email (TODAY)</div>
-        <div class="t-detail">4 clear days' notice required for an SGM (Cl. 9). Email received Thu 9 Apr (24h rule). Clear days: Fri 10, Sat 11, Sun 12, Mon 13 Apr = 4 clear days. Earliest SGM: Tue 14 Apr. 📢 Include reminder: constitutional amendments must be submitted to the Hon Secretary by Sun 26 Apr (6 weeks before AGM).</div>
-      </div>
-      <div class="t-row period">
-        Thu 9 Apr – Mon 13 Apr · 4 clear days' notice period
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Tue 14 Apr</span>
-          <span class="t-days">54 days to AGM</span>
-          <span class="t-clause">R. 7.6, 7.9</span>
-        </div>
-        <div class="t-event">SGM held — Electoral Commissioners elected (WEEKDAY — FASTEST) <span class="gain">+17 days vs Route 2 (Fri 1 May)</span></div>
-        <div class="t-detail">5 commissioners elected by secret ballot (at least 1 woman, at least 1 man). First available date after 4 clear days expire. Holding on Tuesday maximises time for the commission to organise.</div>
-      </div>
-      <div class="t-row" style="border-left: 3px solid #e6a817; background: #fffbf0;">
-        <div class="t-top">
-          <span class="t-date">Sun 20 Apr</span>
-          <span class="t-days">48 days to AGM</span>
-          <span class="t-clause">R. 7.6, 7.9</span>
-        </div>
-        <div class="t-event">SGM held — Electoral Commissioners elected (SUNDAY OPTION) <span class="gain">+11 days vs Route 2 (Fri 1 May)</span></div>
-        <div class="t-detail">If a Sunday meeting is preferred. Still well ahead of EGM routes. Commission has 17 days to organise before register due.</div>
-      </div>
-      <div class="t-row period">
-        Wed 15 Apr – Sun 26 Apr · Commission organises: elects Chairperson, establishes processes, requests member register from Hon Sec. Plenty of time.
-      </div>
-    </div>
-
-    <!-- Section 2: Pre-Election -->
-    <div class="section-header">2 · Pre-Election (Apr–May)</div>
-    <div class="timeline-table">
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Sun 26 Apr</span>
-          <span class="t-days">42 days to AGM</span>
-          <span class="t-clause">Cl. 18.1</span>
-        </div>
-        <div class="t-event">Constitutional amendments deadline</div>
-        <div class="t-detail">Members must submit proposed amendments to the Hon Secretary at least 6 weeks (42 days) before the AGM. 6 weeks before Sun 7 Jun = Sun 26 Apr.</div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Sun 3 May</span>
-          <span class="t-days">35 days to AGM</span>
-          <span class="t-clause">R. 7.15</span>
-        </div>
-        <div class="t-event">Member register snapshot date</div>
-        <div class="t-detail">Register must be correct as at 20 clear days before the Election (Sun 24 May). Excluding Sun 3 May and Sun 24 May: Mon 4 – Sat 23 May = 20 clear days. ✓</div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Mon 4 May</span>
-          <span class="t-days">34 days to AGM</span>
-          <span class="t-clause">R. 7.2</span>
-        </div>
-        <div class="t-event">Nominations open</div>
-        <div class="t-detail">Electoral Commission announces that nominations are open and makes nomination papers available to members. Commission has been in place since mid-April — well prepared.</div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Thu 7 May</span>
-          <span class="t-days">31 days to AGM</span>
-          <span class="t-clause">R. 7.15, Cl. 17.3.1</span>
-        </div>
-        <div class="t-event">Hon Sec provides member register to Electoral Commission</div>
-        <div class="t-detail">Must be provided 15 clear days before Election. Send Thu 7 May, received Fri 8 May. Clear days: Sat 9 May – Fri 23 May = 15 clear days. ✓</div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Fri 8 May</span>
-          <span class="t-days">30 days to AGM</span>
-          <span class="t-clause">R. 7.2, Cl. 17.3.1</span>
-        </div>
-        <div class="t-event">Nominations close</div>
-        <div class="t-detail">Nomination papers must be returned at least 14 clear days before Election. Send Fri 8 May, received Sat 9 May. Clear days: Sun 10 – Fri 23 May = 14 clear days. ✓</div>
-      </div>
-      <div class="t-row period">
-        Sat 9 May – Wed 13 May · Electoral Commission verifies nominations, checks eligibility
-      </div>
-    </div>
-
-    <!-- Section 3: EC Preparation & AGM Notices -->
-    <div class="section-header">3 · EC Preparation &amp; AGM Notices (May)</div>
-    <div class="timeline-table">
-      <div class="t-row prep-event">
-        <div class="t-top">
-          <span class="t-date">By Fri 15 May</span>
-          <span class="t-days">before AGM notice</span>
-          <span class="t-clause">Cl. 3.5.5, 6.9, 12.9</span>
-        </div>
-        <div class="t-event">EC Preparation — must be completed before AGM notice goes out</div>
-        <div class="t-detail">
-          • Audit completed (Cl. 12.9, R. 5.2)<br>
-          • Annual report prepared by Hon Sec and approved by EC (Cl. 3.5.5)<br>
-          • Budget for forthcoming year approved by EC (Cl. 6.9.5)<br>
-          • Subscription levels recommended by EC (R. 6.3)<br>
-          • Previous AGM minutes prepared (Cl. 6.9.1)<br>
-          • All EGM/SGM minutes since last AGM prepared (Cl. 6.9.2)<br>
-          • Auditor appointment to be placed on AGM agenda (Cl. 6.9.8)
-        </div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Fri 15 May</span>
-          <span class="t-days">23 days to AGM</span>
-          <span class="t-clause">Cl. 6.1, 12.9, 17.3.1</span>
-        </div>
-        <div class="t-event">AGM notice + audited accounts SENT by email</div>
-        <div class="t-detail">21 clear days' notice required. Sent Fri 15 May, received Sat 16 May (24h rule). Clear days: Sun 17 May – Sat 6 Jun = 21 clear days. ✓</div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Fri 15 May</span>
-          <span class="t-days">23 days to AGM</span>
-          <span class="t-clause">Cl. 18.3, 17.3.1</span>
-        </div>
-        <div class="t-event">Constitutional amendments circulated</div>
-        <div class="t-detail">Members must receive 21 clear days' notice of proposed amendments (Cl. 18.3). Sent with AGM notice; same 21 clear days calculation.</div>
-      </div>
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Fri 15 May</span>
-          <span class="t-days">9 days to Election</span>
-          <span class="t-clause">R. 7.4.1, Cl. 17.3.1</span>
-        </div>
-        <div class="t-event">Candidate details circulated</div>
-        <div class="t-detail">Electoral Commission must circulate names, CVs, and manifestos at least 7 clear days before Election. Sent Fri 15 May, received Sat 16 May. Clear days: Sun 17 – Fri 23 May = 7 clear days before Election Sun 24 May. ✓</div>
-      </div>
-    </div>
-
-    <!-- Section 4: Motions, Election & AGM -->
-    <div class="section-header">4 · Motions, Election &amp; AGM (May–Jun)</div>
-    <div class="timeline-table">
-      <div class="t-row key-event">
-        <div class="t-top">
-          <span class="t-date">Fri 22 May</span>
-          <span class="t-days">16 days to AGM</span>
-          <span class="t-clause">Cl. 7.3, 17.3.1</span>
-        </div>
-        <div class="t-event">Motions deadline — members must send by this date</div>
+        <div class="t-event">Motions deadline — members must send by this date <span class="deadline">⏰ DEADLINE: Must send by Fri 22 May</span></div>
         <div class="t-detail">Members must give 14 clear days' written notice to Hon Secretary. Send Fri 22 May, received Sat 23 May. Clear days: Sun 24 May – Sat 6 Jun = 14 clear days. ✓</div>
       </div>
       <div class="t-row key-event">
@@ -1127,9 +898,8 @@
       <thead>
         <tr>
           <th></th>
-          <th class="col-a">Route 3 ★</th>
-          <th class="col-b">Route 2</th>
-          <th class="col-c">Route 1</th>
+          <th class="col-a">Route A ⚠️</th>
+          <th class="col-b">Route B ★</th>
         </tr>
       </thead>
       <tbody>
@@ -1137,67 +907,61 @@
           <td>Meeting type</td>
           <td class="col-a">EGM (21 clear days)</td>
           <td class="col-b">EGM (21 clear days)</td>
-          <td class="col-c">SGM (4 clear days)</td>
         </tr>
         <tr>
-          <td>Notice sent</td>
-          <td class="col-a">Wed 8 Apr</td>
-          <td class="col-b">Wed 8 Apr</td>
-          <td class="col-c">Wed 8 Apr</td>
+          <td>EGM notice deadline</td>
+          <td class="col-a slack-none">Wed 8 Apr (for Fri 1 May EGM) / Sun 12 Apr (for Sun 4 May EGM)</td>
+          <td class="col-b slack-tight">Sun 12 Apr (for Sun 4 May EGM)</td>
         </tr>
         <tr>
           <td>Commissioners elected</td>
-          <td class="col-a">Sun 4 May</td>
-          <td class="col-b">Fri 1 May / Sun 4 May</td>
-          <td class="col-c">Tue 14 Apr / Sun 20 Apr</td>
+          <td class="col-a">Fri 1 May / Sun 4 May</td>
+          <td class="col-b">Sun 4 May</td>
         </tr>
         <tr>
           <td>Commission prep time</td>
-          <td class="col-a slack-good">10 days ✓</td>
-          <td class="col-b slack-tight">3–6 days ⚠️</td>
-          <td class="col-c slack-good">17–23 days ✓</td>
+          <td class="col-a slack-tight">3–6 days ⚠️</td>
+          <td class="col-b slack-good">10 days ✓</td>
         </tr>
         <tr>
-          <td>Amendments deadline</td>
-          <td class="col-a">Sun 3 May</td>
-          <td class="col-b">Sun 26 Apr</td>
-          <td class="col-c">Sun 26 Apr</td>
+          <td>Nominations close</td>
+          <td class="col-a">Fri 8 May</td>
+          <td class="col-b">Fri 15 May</td>
+        </tr>
+        <tr>
+          <td>AGM notice deadline</td>
+          <td class="col-a slack-none">Fri 15 May</td>
+          <td class="col-b">Fri 22 May</td>
+        </tr>
+        <tr>
+          <td>Candidate details deadline</td>
+          <td class="col-a slack-none">Fri 15 May</td>
+          <td class="col-b">Fri 22 May</td>
         </tr>
         <tr>
           <td>Election</td>
-          <td class="col-a">Sun 31 May</td>
-          <td class="col-b">Sun 24 May</td>
-          <td class="col-c">Sun 24 May</td>
+          <td class="col-a">Sun 24 May</td>
+          <td class="col-b">Sun 31 May</td>
         </tr>
         <tr>
-          <td>AGM notice sent</td>
+          <td>Motions deadline</td>
           <td class="col-a">Fri 22 May</td>
-          <td class="col-b">Fri 15 May</td>
-          <td class="col-c">Fri 15 May</td>
+          <td class="col-b">Fri 29 May</td>
         </tr>
         <tr>
           <td>AGM</td>
-          <td class="col-a">Sun 14 Jun</td>
-          <td class="col-b">Sun 7 Jun</td>
-          <td class="col-c">Sun 7 Jun</td>
+          <td class="col-a">Sun 7 Jun</td>
+          <td class="col-b">Sun 14 Jun</td>
         </tr>
         <tr>
           <td>Total days</td>
-          <td class="col-a">67 days</td>
-          <td class="col-b">60 days</td>
-          <td class="col-c">60 days</td>
-        </tr>
-        <tr>
-          <td>SGM justification</td>
-          <td class="col-a">Not needed</td>
-          <td class="col-b">Not needed</td>
-          <td class="col-c">Required (Cl. 9)</td>
+          <td class="col-a">60 days</td>
+          <td class="col-b">67 days</td>
         </tr>
         <tr>
           <td>Risk level</td>
-          <td class="col-a slack-good">Comfortable ✓</td>
-          <td class="col-b slack-none">High risk ⚠️</td>
-          <td class="col-c slack-tight">Emergency ⚡</td>
+          <td class="col-a slack-none">High risk ⚠️</td>
+          <td class="col-b slack-good">Comfortable ✓</td>
         </tr>
       </tbody>
     </table>
@@ -1206,13 +970,13 @@
   <!-- 24h Notice Rule -->
   <div class="info-box" style="margin-top:1.5rem;">
     <strong>📨 24-Hour Email Receipt Rule</strong><br>
+
     Notice sent by email is deemed received 24 hours after sending (Cl. 17.3.1). "Clear days" exclude both the day of receipt and the day of the event (Cl. 20.1). Therefore, for X clear days' notice, you must <strong>send</strong> the notice X+2 calendar days before the event:<br>
     • 21 clear days → send <strong>23</strong> calendar days before<br>
     • 15 clear days → send <strong>17</strong> calendar days before<br>
     • 14 clear days → send <strong>16</strong> calendar days before<br>
     • 10 clear days → send <strong>12</strong> calendar days before<br>
     • 7 clear days → send <strong>9</strong> calendar days before<br>
-    • 4 clear days (SGM) → send <strong>6</strong> calendar days before<br>
     All dates in the timelines above incorporate this rule.
   </div>
 
@@ -1221,11 +985,10 @@
     <h2>🔄 What Changed vs March Timeline</h2>
     <ul>
       <li><strong>Start date shifted:</strong> The original timeline assumed notices sent Mon 30 Mar. That date has passed. All routes now recalculate from <strong>Wed 8 April 2026</strong> (today).</li>
-      <li><strong>Original Route C (SGM → Sun 5 Apr) is no longer possible</strong> — the SGM date has passed. The SGM route (now Route 1) targets the earliest possible date from today: Tue 14 Apr or Sun 20 Apr.</li>
       <li><strong>Original Route B (EGM → Wed 22 Apr) is no longer possible</strong> — the 21 clear days now expire Thu 30 Apr, pushing the earliest EGM to Fri 1 May.</li>
-      <li><strong>Route 2 (EGM → AGM 7 Jun) is now HIGH RISK:</strong> With EGM no earlier than Fri 1 May, the commission has only 3–6 days before register and nominations deadlines. Extremely compressed.</li>
-      <li><strong>Route 3 (Recommended) preserves slack</strong> by targeting AGM Sun 14 Jun instead of 7 Jun, giving the commission 10+ days to organise after the EGM. Same structure as original Route A.</li>
-      <li><strong>Route numbers reordered:</strong> Routes are now numbered 1 (fastest/SGM), 2 (tight/EGM), 3 (recommended/EGM) for clarity. The original used A, B, C.</li>
+      <li><strong>Route A (EGM → AGM 7 Jun) is now HIGH RISK:</strong> With EGM no earlier than Fri 1 May, the commission has only 3–6 days before register and nominations deadlines. Extremely compressed.</li>
+      <li><strong>Route B (Recommended) preserves slack</strong> by targeting AGM Sun 14 Jun instead of 7 Jun, giving the commission 10+ days to organise after the EGM.</li>
+      <li><strong>Two routes only:</strong> This update focuses on the two viable EGM routes. Route A targets AGM 7 Jun (tight), Route B targets AGM 14 Jun (recommended).</li>
     </ul>
   </div>
 
@@ -1233,17 +996,15 @@
   <div class="notes">
     <h2>📝 Notes</h2>
     <ul>
-      <li><strong>Route 3 advantage</strong> — By pushing the AGM to Sun 14 Jun (still within the 1 Jun – 31 Jul constitutional window), Route 3 uses standard EGM process with comfortable slack. No SGM justification debate. Cleanest constitutional path.</li>
-      <li><strong>Route 2 risk</strong> — Same EGM process as Route 3 but targeting AGM 7 Jun. The commission has barely any time between formation and needing to process nominations. If EGM is held on Sun 4 May (Sunday), the register is due in 3 days. Consider holding EGM on Fri 1 May (weekday) to gain 3 extra days.</li>
-      <li><strong>Route 1 (SGM) advantage</strong> — Commissioners in place by mid-April, giving them weeks to prepare. The trade-off: requires an SGM justification that may face scrutiny.</li>
-      <li><strong>SGM justification</strong> (Cl. 9) — "Electoral Commissioners were not elected at the AGM on 27 Jul 2025 as required by R.&nbsp;7.9, and the election cycle cannot begin without them." Only Route 1 requires this.</li>
+      <li><strong>Route B advantage</strong> — By pushing the AGM to Sun 14 Jun (still within the 1 Jun – 31 Jul constitutional window), Route B uses standard EGM process with comfortable slack. Cleanest constitutional path.</li>
+      <li><strong>Route A risk</strong> — Same EGM process as Route B but targeting AGM 7 Jun. The commission has barely any time between formation and needing to process nominations. If EGM is held on Sun 4 May (Sunday), the register is due in 3 days. Consider holding EGM on Fri 1 May (weekday) to gain 3 extra days.</li>
       <li><strong>AGM date constraints</strong> (Cl. 6.8) — Must be between 1 June and 31 July. Must not fall on a UK public holiday (or the Friday/Monday either side), or on an auspicious Shia Ithna-Asheri date. Both Sun 7 Jun and Sun 14 Jun 2026 appear clear.</li>
-      <li><strong>EGM/SGM can be on a weekday</strong> — Only the EC election must be on a Sunday (Cl. 10.1). The EGM/SGM to elect commissioners can be held on any day.</li>
+      <li><strong>EGM can be on a weekday</strong> — Only the EC election must be on a Sunday (Cl. 10.1). The EGM to elect commissioners can be held on any day.</li>
       <li><strong>Constitutional amendments</strong> (Cl. 18.1, 18.3) — Members must submit amendments to the Hon Sec at least 6 weeks before the AGM. Amendments must then be circulated to members with at least 21 clear days' notice before the meeting.</li>
       <li><strong>Election must be on a Sunday</strong> (Cl. 10.1) — Polling hours 10:30–19:30, at least 2 weeks before the AGM.</li>
       <li><strong>Uncontested positions</strong> (R. 7.4.2) — Declared elected without a vote.</li>
       <li><strong>Contested President</strong> (R. 7.4.3) — If more than one candidate, hustings are mandatory (at least 1 day before Election).</li>
-      <li><strong>If no Electoral Commissioners are elected</strong> at the EGM/SGM, the entire election cycle cannot proceed.</li>
+      <li><strong>If no Electoral Commissioners are elected</strong> at the EGM, the entire election cycle cannot proceed.</li>
     </ul>
   </div>
 
@@ -1253,7 +1014,7 @@
     <p style="font-size:.83rem; color:#555; margin-bottom:.75rem;">Everything the Hon Secretary and EC need to complete. Tick off as you go.</p>
 
     <h3>🏛️ Electoral Commission</h3>
-    <label><input type="checkbox"> Electoral Commissioners elected at EGM/SGM <span class="cl-ref">(R. 7.9)</span></label>
+    <label><input type="checkbox"> Electoral Commissioners elected at EGM <span class="cl-ref">(R. 7.9)</span></label>
     <label><input type="checkbox"> Member register snapshot taken (20+ clear days before Election) <span class="cl-ref">(R. 7.15)</span></label>
     <label><input type="checkbox"> Member register provided to Electoral Commission (15+ clear days before Election) <span class="cl-ref">(R. 7.15)</span></label>
     <label><input type="checkbox"> Nomination papers distributed and collected <span class="cl-ref">(R. 7.2)</span></label>
@@ -1270,7 +1031,7 @@
     <label><input type="checkbox"> Budget for forthcoming year prepared and approved by EC <span class="cl-ref">(Cl. 6.9.5)</span></label>
     <label><input type="checkbox"> Subscription level recommendations prepared <span class="cl-ref">(R. 6.3)</span></label>
     <label><input type="checkbox"> Previous AGM minutes prepared <span class="cl-ref">(Cl. 6.9.1)</span></label>
-    <label><input type="checkbox"> All EGM/SGM minutes since last AGM prepared <span class="cl-ref">(Cl. 6.9.2)</span></label>
+    <label><input type="checkbox"> All EGM minutes since last AGM prepared <span class="cl-ref">(Cl. 6.9.2)</span></label>
 
     <h3>📨 Notices &amp; Circulation</h3>
     <label><input type="checkbox"> AGM notice issued 21+ clear days before (23 cal days by email) <span class="cl-ref">(Cl. 6.1)</span></label>
